@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title><%= title %></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="shortcut icon" href="favicon.ico">
+<style>
+body { padding: 0; }
+body.container { margin:0; padding: 0; }
+header { border-bottom: 1px solid #ccc; }
+main { padding: 20px 50px; }
+textarea {
+  width: 100%;
+  height: 300px;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 13px;
+}
+</style>
+</head>
+<body class="containe">
+
+<header>
+<%- include('./+.header.ejs'); %>
+</header>
+
+<main>
+  <p>JSON
+    &nbsp;&nbsp;↑&nbsp;&nbsp; browser reload to see ® Random changes
+    &nbsp;&nbsp;↑&nbsp;&nbsp; adjust query parameters to test</p>
+  <textarea><%= out %></textarea>
+</main>
+
+<footer>
+</footer>
+
+</body>
+</html>
