@@ -2,7 +2,7 @@
 
 Here is my solution to the task
 
-git repository ➔ [https://github.com/veriKami/verikami-node-software-house]()
+git repository ➔ [https://github.com/veriKami/verikami-node-software-house](https://github.com/veriKami/verikami-node-software-house)
 
 ```
 ツ git clone https://github.com/veriKami/verikami-node-software-house
@@ -28,7 +28,7 @@ reset (db.json)
 
 ## Solution
 
-web interface ➔ [http://localhost:8000]()
+web interface ➔ [http://localhost:8000](http://localhost:8000)
 
 ```
 🐧 | ® Movie | Movies | ® Movies(d) | Movies(g) | Movies(dg) | Movies(d[g]) | 🍋 (+) Movie
@@ -58,5 +58,5 @@ web interface ➔ [http://localhost:8000]()
 
 I think I managed to address (to a greater or lesser extent) all the problems raised, although the solution is sketchy and simplified in many places. 
 
-🐧 (veriKami) Weronika Kami 🐧 [https://www.linkedin.com/in/verikami]()
+🐧 (veriKami) Weronika Kami 🐧 [https://www.linkedin.com/in/verikami](https://www.linkedin.com/in/verikami)
 
