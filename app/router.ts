@@ -18,6 +18,7 @@ router.get("/",
     console.log("INTRO (html)");
 
     try {
+        //: data: movies
         const movies = await db.getData("/movies");
 
         //: unique movies
@@ -45,6 +46,7 @@ router.get("/movie",
     console.log("MOVIE");
 
     try {
+        //: data: movies
         const movies = await db.getData("/movies");
 
         //: unique movies
@@ -81,11 +83,11 @@ router.get('/movies',
         const data = await db.getData("/");
         let movies = data.movies;
 
-        //: output (movies)
-        let out: any[] = [];
-
         //: unique movies
         movies = uniqueMovies(movies);
+
+        //: output (movies)
+        let out: any[] = [];
 
         //: case (1) empty default
         //: ----------------------------------------------------------
@@ -169,13 +171,13 @@ router.get("/make",
     if (!m) return res.render("make", { title: "Make", out: null });
 
     try {
-        //: json parse
-        m = jsonParse(m);
-
         //: data: movies & genres
         const data = await db.getData("/");
         let movies = data.movies;
         let genres = data.genres;
+
+        //: json parse
+        m = jsonParse(m);
 
         //: validation
         const validate = validateMovie(m, genres) || "OK";
