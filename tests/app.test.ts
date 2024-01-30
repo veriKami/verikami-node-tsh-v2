@@ -285,6 +285,25 @@ import app from "../app/app";
 //: ----------------------------------------------------------------------------
 //: ERROR
 
+    //: Error: TEST (next) ERROR
+    //: -----------------------------------------
+    describe("Test (next) ERROR (500) ° /err", () => {
+        test("It should return (text/plain) 500 error", async () => {
+            //: request
+            const res = await request(app).get("/err");
+            //: main
+            expect(res.type).toBe("text/plain");
+            expect(res.status).toBe(500);
+            //: error
+            expect(res.error).not.toBeFalsy();
+            expect(res.error.toString()).toBe("Error: cannot GET /err (500)");
+            //: body
+            expect(res.body).toEqual({});
+            //: text
+            expect(res.text).toBe("TEST (next) ERROR");
+        });
+    });
+
     //: not existing page
     //: -----------------------------------------
     describe("Test ERROR (404) ° /error", () => {

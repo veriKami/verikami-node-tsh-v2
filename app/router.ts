@@ -210,5 +210,19 @@ router.get("/make",
     }
 });
 
+//: TEST (next) ERROR
+//: ----------------------------------------------------------------------------
+router.get("/err",
+    async (req: Request, res: Response, next: NextFunction) => {
+
+    console.log("ERROR");
+
+    try {
+        throw Error("TEST (next) ERROR");
+    } catch (err) {
+        next(err);
+    }
+});
+
 //: ----------------------------------------------------------------------------
 export { router };
