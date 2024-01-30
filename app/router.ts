@@ -191,7 +191,7 @@ router.get("/make",
 
         //: get last object to calculate id
         //: augmentation: calculate & insert id
-        const last = movies[movies.length - 1] || { id: 0 };
+        const last = movies[movies.length - 1];
         const obj = { id: last.id + 1, ...m };
 
         //: insert into db
