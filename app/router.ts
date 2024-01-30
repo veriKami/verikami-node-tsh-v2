@@ -33,10 +33,10 @@ router.get("/",
         });
 
     } catch (err) {
+        /* istanbul ignore next */
         next(err);
     }
 });
-
 
 //: MOVIE (random movie)
 //: ----------------------------------------------------------------------------
@@ -57,6 +57,7 @@ router.get("/movie",
         res.json(out);
 
     } catch (err) {
+        /* istanbul ignore next */
         next(err);
     }
 });
@@ -130,6 +131,7 @@ router.get('/movies',
         res.json(out);
 
     } catch (err) {
+        /* istanbul ignore next */
         next(err);
     }
 });
@@ -203,6 +205,7 @@ router.get("/make",
         res.json(out);
 
     } catch (err) {
+        /* istanbul ignore next */
         next(err);
     }
 });

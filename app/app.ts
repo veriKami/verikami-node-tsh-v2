@@ -36,8 +36,7 @@ app.use("/", router);
 //: ----------------------------------------------------------------------------
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(err.stack);
-    //res.status(500).send("ERROR");
-    res.status(500).type("text").send(err.stack);
+    res.status(500).type("text").send(err.message);
 });
 
 //: ----------------------------------------------------------------------------
