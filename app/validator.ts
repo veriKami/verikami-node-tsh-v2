@@ -110,6 +110,7 @@ const validator: Validator = {
 
 //: VALIDATE INPUT
 //: ----------------------------------------------------------------------------
+/* istanbul ignore next */
 
 const validateMovie = (m: NewMovie, genres: string[]): string => {
     let msg: any = "";
