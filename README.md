@@ -36,27 +36,33 @@ web interface ➔ [http://localhost:8000](http://localhost:8000)
 
 **Interface Description**
 
-1. 🐧 – [/](http://localhost:8000)
-   - (html) displays random movie 
-2. **® Movie** – [/movie](http://localhost:8000/movie)
-   - (json) returns ® random movie from "no duplicates" set
-3. **Movies** – [/movies](http://localhost:8000/movies)
-   - (json) returns movies with no duplicates (desc order to easy see last inserts)
+1. 🐧 (html) – [/](http://localhost:8000)
+   - displays random movie
+
+2. **® Movie** (json) – [/movie](http://localhost:8000/movie)
+   - returns ® random movie from "no duplicates" set
+
+3. **Movies** (json) – [/movies](http://localhost:8000/movies)
+   - returns movies with no duplicates (desc order to easy see last inserts)
    - NOTE: to display only one random movie adjust the code
-4. **® Movies(d)** – [/movies/?d=100](http://localhost:8000/movies/?d=100)
-   - (json) returns ® random movie from set filtered by duration
-5. **Movies(g)** – [/movies/?g=Comedy,Sport](http://localhost:8000/movies/?g=Comedy,Sport)
-   - (json) returns movies filtered by genres & sorted by "__matches" parameter
-6. **Movies(dg)** – [/movies/?d=100&g=Comedy,Romance,Sport](http://localhost:8000/movies/?d=100&g=Comedy,Romance,Sport)
-   - (json) returns movies filtered by duration & genres sorted by "__matches" parameter
-7. **Movies(d[g])** [/movies/?d=100&g=["Comedy","Romance","Sport"]](http://localhost:8000/movies/?d=100&g=["Comedy","Romance","Sport"])
-   - (json) as above with array like query format
-8. 🍋 **(+) Movie** – [/make](http://localhost:8000/make)
-   - (html) new movie interface when you can test inserts (with validation) via GET & POST
+
+4. **® Movies(d)** (json) – [/movies/?d=100](http://localhost:8000/movies/?d=100)
+   - returns ® random movie from set filtered by duration
+
+5. **Movies(g)** (json) – [/movies/?g=Comedy,Sport](http://localhost:8000/movies/?g=Comedy,Sport)
+   - returns movies filtered by genres & sorted by "__matches" parameter
+
+6. **Movies(dg)** (json) – [/movies/?d=100&g=Comedy,Romance,Sport](http://localhost:8000/movies/?d=100&g=Comedy,Romance,Sport)
+   - returns movies filtered by duration & genres sorted by "__matches" parameter
+
+7. **Movies(d[g])** (json) – [/movies/?d=100&g=["Comedy","Romance","Sport"]](http://localhost:8000/movies/?d=100&g=["Comedy","Romance","Sport"])
+   - as above with array like query format
+
+8. 🍋 **(+) Movie** (html) – [/make](http://localhost:8000/make)
+   - new movie interface when you can test inserts (with validation) via GET & POST
 
 ## Note
 
 I think I managed to address (to a greater or lesser extent) all the problems raised, although the solution is sketchy and simplified in many places. 
 
 🐧 (veriKami) Weronika Kami 🐧 [https://www.linkedin.com/in/verikami](https://www.linkedin.com/in/verikami)
-
