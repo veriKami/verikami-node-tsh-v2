@@ -3,7 +3,7 @@ coverage
 build
 types
 
-docs/html
+docs
 
 **/.DS_Store
 **/*__
