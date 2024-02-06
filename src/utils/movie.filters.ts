@@ -41,44 +41,20 @@ const filterByDuration = (movies: Movie[], options: any ) => {
 //: ----------------------------------------------------------------------------
 const uniqueMovies = (movies: Movie[]) => {
 
-	//: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//: TODO: avoid duplicates
-	//: TODO: final with id
-    //: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	/*/
-    const all = movies.map((x: any) => {
-    	const { id, ...y } = x; //: remove id
-    	return JSON.stringify(y);
-    });
-    let uniq = [...new Set(all)];
-    uniq = uniq.map((x: any) => jsonParse(x));
-    //console.log(all);
-    //console.log(uniq);
-    //*/
-	//: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //: reversed map
+    const map = new Map(movies.map((obj) => {
+        let { id, __matches, ...y } = obj;
+        return [ JSON.stringify(y), id ];
+    }));
 
-    let a: any = {}; //: movies
-    let m: any = {}; //: matches
-
-    movies.forEach((x: any) => {
-    	//: remove id & __matches
-    	const { id, __matches, ...y } = x;
-    	a[x.id] = JSON.stringify(y);
-    	m[x.id] = __matches;
+    //: remap
+    const remap = Array.from(map, ([key, val]) => {
+        let ids = { id: val };
+        let obj = jsonParse(key);
+        return { ...ids, ...obj };
     });
 
-    //: Flip
-    const flip = (x: any) => Object.fromEntries(
-    	Object.entries(x).map(([k, v]) => [v, k]));
-
-    //: Flip Flap ,-))
-    a = flip(flip(a));
-    a = Object.entries(a).map(([k, v]) => {
-    	const p = jsonParse(v);
-    	return { id: +k, ...p, __matches: m[k] };
-    });
-
-	return a;
+	return remap;
 }
 
 /** get random movie from Movies array */
