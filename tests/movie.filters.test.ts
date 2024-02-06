@@ -1,6 +1,6 @@
 //: ----------------------------------------------------------------------------
-//: veriKami // movie.filters.test.js
-//: ----------------------------------------------------------------------------
+/** TEST ** movie.filters.test.js
+/** ------------------------------------------------------------------------- */
 import { filterByGenre, filterByDuration, uniqueMovies, randomMovie }
 from "../src/utils/movie.filters";
 
