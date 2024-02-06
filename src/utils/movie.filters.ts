@@ -48,7 +48,7 @@ const uniqueMovies = (movies: Movie[]) => {
     }));
 
     //: remap
-    const remap = Array.from(map, ([key, val]) => {
+    const remap = [...map].map(([key, val]) => {
         let ids = { id: val };
         let obj = jsonParse(key);
         return { ...ids, ...obj };
