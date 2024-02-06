@@ -36,13 +36,11 @@ const getMovies = async (
 
     //: json query -> map runtime & create genres array
     //: ----------------------------------------------------
-    if (complete) {
-        try {
-            duration = JSON.parse(complete).runtime;
-            genres = JSON.parse(complete).genres;
-            if (genres.length === 0) genres = undefined;
-        } catch {};
-    }
+    try {
+        duration = JSON.parse(complete).runtime;
+        genres = JSON.parse(complete).genres;
+        if (genres.length === 0) genres = undefined;
+    } catch {};
 
     //: output (movies)
     //: ----------------------------------------------------
@@ -63,20 +61,17 @@ const getMovies = async (
 
         log("md", mode);
 
-        //: case (1) empty default
+        //: case (1) empty default -> random movie
         //: ------------------------------------------------
         if (1 == mode) {
-            //: all movies (descending order)
             //: out = out.sort((x: any) => - x.id);
-            //: random movie
             out = randomMovie(out);
             log("m1");
         }
 
-        //: case (2) only duration
+        //: case (2) only duration -> random movie
         //: ------------------------------------------------
         if (2 == mode) {
-            //: filter min/max -> random movie
             out = filterByDuration(out, { duration });
             out = randomMovie(out);
             log("m2");
@@ -85,7 +80,6 @@ const getMovies = async (
         //: case (3) only genres
         //: ------------------------------------------------
         if (3 == mode) {
-            //: filter by genres
             out = filterByGenre(out, { genres });
             log("m3");
         }
@@ -93,7 +87,6 @@ const getMovies = async (
         //: case (4) genres + duration
         //: ------------------------------------------------
         if (4 == mode) {
-            //: filter by genres -> filter by duration
             out = filterByGenre(out, { genres });
             out = filterByDuration(out, { duration });
             log("m4");
