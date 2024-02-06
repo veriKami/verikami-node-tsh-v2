@@ -8,10 +8,17 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./build",
-    "rootDir": "./"
+    "rootDir": "./src",
+    //"inlineSourceMap": true,
+    //"sourceMap": true,
+    //"removeComments": true
   },
+  "include": [
+    "src/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
+    "build/**",
     "**/*.test.ts"
   ]
 }

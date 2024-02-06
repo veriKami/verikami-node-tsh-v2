@@ -24,83 +24,87 @@ label { padding: 10px 0 0 0; }
 </style>
 </head>
 <body class="containe">
-
 <header>
-<%- include('./+.header.ejs'); %>
-</header>
-
+<%- include('./+.header.ejs'); %></header>
 <main>
-  <p>MAKE
-  	&nbsp;&nbsp;↓&nbsp;&nbsp; use <span class="hig">&nbsp;GET Submit Form&nbsp;</span> to see json & query
-  	&nbsp;&nbsp;↓&nbsp;&nbsp; use <span class="hig">&nbsp;POST Submit Form&nbsp;</span> to stay in html</p>
+  <p>
+    MAKE &nbsp;&nbsp;↓&nbsp;&nbsp; use <span class="hig">&nbsp;GENERATE&nbsp;</span>
+    to randomly fill the form
+    &nbsp;&nbsp;↓&nbsp;&nbsp; use <span class="hig">&nbsp;POST Submit Form&nbsp;</span>
+    to test and submit the data
+  </p>
   <p id="msg"></p>
-  <div style="border:1px solid #444;padding:20px;background:#f5f5f5;">
-  	<form id="form" name="form" method="post" action="/make">
-  	<div style="width:50%;float:left;">
-  		<label for="title">title (string) * required (255)</label><br>
-  	  <input type="text" id="title" name="title" value="TiT"><br>
-  	  <label for="year">year (number) * required</label><br>
-  	  <input type="text" id="year" name="year" value="1999"><br>
-  	  <label for="runtime">runtime (number) * required</label><br>
-  	  <input type="text" id="runtime" name="runtime" value="111"><br>
-  	  <label for="director">director (string) * required (255)</label><br>
-  	  <input type="text" id="director" name="director" value="Jerzy Hektor"><br>
-  	  <label for="actors">actors (string) * optional</label><br>
-  	  <input type="text" id="actors" name="actors" value=""><br>
-  	  <label for="plot">plot (string) * optional</label><br>
-  	  <input type="text" id="plot" name="plot" value=""><br>
-  	  <label for="posterUrl">posterUrl (string) * optional</label><br>
-  	  <input type="text" id="posterUrl" name="posterUrl" value=""><br>
-  	</div>
-  	<div>
-			<label for="genres">grenres * required</label><br>
-			<select id="genres" name="genres" size="24" multiple style="width:30%;padding:3px;">
-			  <option value="Comedy">Comedy</option>
-			  <option value="Fantasy">Fantasy</option>
-			  <option value="Crime">Crime</option>
-			  <option value="Drama">Drama</option>
-			  <option value="Music">Music</option>
-			  <option value="Adventure">Adventure</option>
-			  <option value="History">History</option>
-			  <option value="Thriller">Thriller</option>
-			  <option value="Animation">Animation</option>
-			  <option value="Family">Family</option>
-			  <option value="Mystery">Mystery</option>
-			  <option value="Biography">Biography</option>
-			  <option value="Action">Action</option>
-			  <option value="Film-Noir">Film-Noir</option>
-			  <option value="Romance">Romance</option>
-			  <option value="Sci-Fi">Sci-Fi</option>
-			  <option value="War">War</option>
-			  <option value="Western">Western</option>
-			  <option value="Horror">Horror</option>
-			  <option value="Musical">Musical</option>
-			  <option value="Sport">Sport</option>
-			  <option value="" disabled>──────────</option>
-			  <option value="Unknown">Unknown</option>
-			  <option value="">Empty</option>
-			</select>
-  	  <div style="padding-top:50px;">
-  	    <div style="float:right;text-align:right;">
-  	      <input id="submit" type="submit" value="POST Submit Form">
-  	    </div>
-  	    <div style="float:left;text-align:left;">
-  	      <input id="get" type="submit" value="GET Submit Form">
-  	    </div>
-  	    <div style="clear:both;"></div>
-  	  </div>
-  	</div>
-  </form>
+  <div style="border: 1px solid #444; padding: 20px; background: #f5f5f5">
+    <form id="form" name="form" method="post" action="/make">
+      <div style="width: 50%; float: left">
+        <label for="title">title (string) * required (255)</label><br>
+        <input type="text" id="title" name="title" value=""><br>
+        <label for="year">year (number) * required</label><br>
+        <input type="text" id="year" name="year" value=""><br>
+        <label for="runtime">runtime (number) * required</label><br>
+        <input type="text" id="runtime" name="runtime" value=""><br>
+        <label for="director">director (string) * required (255)</label><br>
+        <input type="text" id="director" name="director" value=""><br>
+        <label for="actors">actors (string) * optional</label><br>
+        <input type="text" id="actors" name="actors" value=""><br>
+        <label for="plot">plot (string) * optional</label><br>
+        <input type="text" id="plot" name="plot" value=""><br>
+        <label for="posterUrl">posterUrl (string) * optional</label><br>
+        <input type="text" id="posterUrl" name="posterUrl" value=""><br>
+      </div>
+      <div>
+        <label for="genres">grenres * required</label><br>
+        <select id="genres" name="genres" size="24" multiple style="width: 30%; padding: 3px">
+          <option value="Comedy">Comedy</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Crime">Crime</option>
+          <option value="Drama">Drama</option>
+          <option value="Music">Music</option>
+          <option value="Adventure">Adventure</option>
+          <option value="History">History</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Animation">Animation</option>
+          <option value="Family">Family</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Biography">Biography</option>
+          <option value="Action">Action</option>
+          <option value="Film-Noir">Film-Noir</option>
+          <option value="Romance">Romance</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="War">War</option>
+          <option value="Western">Western</option>
+          <option value="Horror">Horror</option>
+          <option value="Musical">Musical</option>
+          <option value="Sport">Sport</option>
+          <option value="" disabled>──────────</option>
+          <option value="Unknown">Unknown</option>
+          <option value="">Empty</option>
+        </select>
+        <div style="padding-top: 50px">
+          <div style="float:right; text-align:right;">
+            <input id="submit" type="submit" value="POST Submit Form">
+          </div>
+          <div style="float:left; margin-right:30px;">
+            <input id="res" type="reset" value="Reset Form">
+          </div>
+          <div style="float:left; margin-right:10px;">
+            <input id="gen" type="button" value="GENERATE">
+          </div>
+          <div style="clear: both"></div>
+        </div>
+      </div>
+    </form>
+  </div>
 </main>
-
 <footer>
 </footer>
-
 </body>
 <script>
+//: --------------------------------------------------------
 const handler = async (event) => {
   event.preventDefault();
-  const server = "http://localhost:8000";
+  const server = window.location.origin;
+  console.log(server);
   const form = new FormData(event.target);
   const data = Object.fromEntries(form.entries());
   data.genres = form.getAll("genres");
@@ -108,12 +112,9 @@ const handler = async (event) => {
   if (data.actors === "") delete data.actors;
   if (data.plot === "") delete data.plot;
   if (data.posterUrl === "") delete data.posterUrl;
-  if (event.submitter.id === "get") {
-  	const query = JSON.stringify(data);
-  	return document.location.href = `${server}/make/?m=${query}`;
-  }
+  //: ------------------------------------------------------
   try {
-    const response = await fetch(`${server}/make`, {
+    const response = await fetch(`${server}/movie`, {
       method: "POST",
       headers: {
         "Accept": "application/json",
@@ -121,16 +122,65 @@ const handler = async (event) => {
       },
       body: JSON.stringify(data)
     });
+    //: ----------------------------------------------------
     const msg = document.getElementById("msg");
     const res = await response.json();
+    //: ----------------------------------------------------
+    //: reload (with timeout) on success
+    //: const reload = () => document.location.href = `${server}/make`;
+    //: if (res.id) setTimeout(reload, 3333);
+    //: ----------------------------------------------------
+    //: display object or message on failure
     msg.innerHTML = JSON.stringify(res);
     console.log(res);
   } catch (e) {
     console.error(e);
   }
 }
+//: --------------------------------------------------------
 const form = document.querySelector("form");
 form.addEventListener("submit", handler);
-form.addEventListener("get", handler);
+//: --------------------------------------------------------
+</script>
+<script type="module">
+//: --------------------------------------------------------
+import { faker } from "https://cdn.jsdelivr.net/npm/@faker-js/faker/+esm";
+const targe = {};
+targe.title = document.getElementById("title");
+targe.year = document.getElementById("year");
+targe.runtime = document.getElementById("runtime");
+targe.director = document.getElementById("director");
+targe.actors = document.getElementById("actors");
+targe.plot = document.getElementById("plot");
+targe.posterUrl = document.getElementById("posterUrl");
+//: --------------------------------------------------------
+targe.title.value = "TiT";
+targe.year.value = "1999";
+targe.runtime.value = "111";
+targe.director.value = "Jerzy Hektor";
+//: --------------------------------------------------------
+const gen = () => {
+  const rando = {};
+  rando.title = faker.lorem.sentence(5);
+  rando.year = faker.number.int({ min: 1919, max: 2024 });
+  rando.runtime = faker.number.int({ min: 55, max: 333 });
+  rando.director = faker.person.fullName();
+  rando.actors = ([...Array(3)].map(() => ` ${faker.person.fullName()}`)).toString().trim();
+  rando.plot = faker.lorem.sentence(33);
+  rando.posterUrl = faker.image.avatar();
+  //: ------------------------------------------------------
+  targe.title.value = rando.title;
+  targe.year.value = rando.year;
+  targe.runtime.value = rando.runtime;
+  targe.director.value = rando.director;
+  targe.actors.value = rando.actors;
+  targe.plot.value = rando.plot;
+  targe.posterUrl.value = rando.posterUrl;
+};
+//: --------------------------------------------------------
+const g = document.getElementById("gen");
+const generate = (event) => { gen(); }
+g.addEventListener("click", generate);
+//: --------------------------------------------------------
 </script>
 </html>

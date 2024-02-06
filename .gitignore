@@ -1,6 +1,14 @@
+node_modules
+coverage
+build
+types
 
-node_modules/*
-coverage/*
-build/*
+docs/html
+
+**/.DS_Store
 **/*__
 **/__*
+
+.editorconfig
+.prettierignore
+.prettierrc

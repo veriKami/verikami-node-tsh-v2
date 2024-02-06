@@ -1,24 +1,34 @@
 {
-  "name": "verikami-node-software-house",
-  "version": "1.0.0",
+  "name": "verikami-node-tsh-v2",
+  "version": "2.0.0",
   "description": "The Software House - Node.js Developer recruitment task",
   "author": "veriKami",
   "license": "ISC",
-  "main": "server.ts",
+  "repository": "github:veriKami/verikami-node-tsh-v2",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon --ignore 'data/*.json' server.ts",
-    "serve": "npx tsc && node build/server.js",
-    "build": "npx tsc",
+    "start": "nodemon --ignore 'data/*.json' -e 'js,ts,ejs,json' src/server.ts",
+    "serve": "npm run build && node build/server.js",
+    "build": "npm run clean && npx tsc",
     "test": "jest --detectOpenHandles --silent=true",
+    "test:v": "jest --silent=true --verbose",
     "test:w": "jest --watchAll --detectOpenHandles --silent=true",
     "test:e": "jest --no-cache --detectOpenHandles --forceExit",
-    "test:c": "jest --coverage --silent=true",
-    "reset": "set -x; cp ./data/orig.db.json ./data/db.json"
+    "test:c": "jest --coverage --silent=true --detectOpenHandles",
+    "clean": "rm -rvf build/*",
+    "type:d": "npx tsc -d --declarationDir types --emitDeclarationOnly",
+    "reset": "cp -v data/orig.db.json data/db.json",
+    "docs:m": "npx typedoc --plugin typedoc-plugin-markdown --out docs/md src/**/*.ts",
+    "docs:h": "npx typedoc --out docs/html src/**/*.ts"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "joi": "^17.12.1",
     "node-json-db": "^2.3.0"
   },
   "devDependencies": {
@@ -31,6 +41,8 @@
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
+    "typedoc": "^0.25.7",
+    "typedoc-plugin-markdown": "^3.17.1",
     "typescript": "^5.3.3"
   }
 }

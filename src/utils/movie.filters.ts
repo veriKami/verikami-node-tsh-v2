@@ -1,63 +1,44 @@
 //: ----------------------------------------------------------------------------
-//: veriKami // utils.ts
+/** utils/movie.filters.ts */
+/** ------------------------------------------------------------------------- */
+import { jsonParse, intersection } from "../utils/script.utils";
+import { Movie } from "../@types"; /** Movie interface (db) */
+
+/** filter by genres */
 //: ----------------------------------------------------------------------------
+const filterByGenre = (movies: Movie[], options: any ) => {
 
-interface Movie {
-    id:         number;
-    title:      string;
-    year:       string | number;
-    runtime:    string | number;
-    genres:     string[];
-    director:   string;
-    actors?:    string; //: optional
-    plot?:      string; //: optional
-    posterUrl?: string; //: optional
-    __matches?: number; //: optional (sorting)
-}
+    const genres: string[] = options.genres;
 
-//: ----------------------------------------------------------------------------
-
-//: json parse (with numbers)
-const jsonParse = (str: any) => {
-    return JSON.parse(str, (k, v) => {
-        return (typeof v === "object" || isNaN(v) || v === "")
-            ? v : parseInt(v, 10);
-    });
-};
-
-//: arrays intersection
-const intersection = (a: string[], b: string[]) => {
-    const set = new Set(b);
-    return a.filter((el: any) => set.has(el));
-}
-
-//: ----------------------------------------------------------------------------
-
-//: filter by genres
-const filterByGenre = (movies: Movie[], genres: string[]) => {
     //: filter movies by genres
     let data = movies.filter((el: any) => {
-    	const eg = el.genres;
+        const eg = el.genres;
         const fg = intersection(genres, eg);
         //: matches (score) for sorting
         el.__matches = fg.length;
-    	//: matches only
-    	return fg.length > 0;
+        //: matches only
+        return fg.length > 0;
     });
+
     //: sort by matches (higher first)
     data = data.sort((a: any, b: any) => b.__matches - a.__matches);
     return data;
 }
 
-//: filter by duration (min/max)
-const filterByDuration = (movies: Movie[], duration: string | number) => {
+/** filter by duration (min/max) */
+//: ----------------------------------------------------------------------------
+const filterByDuration = (movies: Movie[], options: any ) => {
+
+    const duration: number = options.duration;
+
     let data = movies;
 	data = data.filter((i: any) => i.runtime >= + duration - 10);
 	data = data.filter((i: any) => i.runtime <= + duration + 10);
 	return data;
 }
 
-//: filter duplicates
+/** filter duplicates */
+//: ----------------------------------------------------------------------------
 const uniqueMovies = (movies: Movie[]) => {
 
 	//: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,7 +70,7 @@ const uniqueMovies = (movies: Movie[]) => {
     //: Flip
     const flip = (x: any) => Object.fromEntries(
     	Object.entries(x).map(([k, v]) => [v, k]));
-    
+
     //: Flip Flap ,-))
     a = flip(flip(a));
     a = Object.entries(a).map(([k, v]) => {
@@ -100,12 +81,12 @@ const uniqueMovies = (movies: Movie[]) => {
 	return a;
 }
 
-//: get random movie from Movies array
-const getRandomMovie = (movies: Movie[]) => {
+/** get random movie from Movies array */
+//: ----------------------------------------------------------------------------
+const randomMovie = (movies: Movie[]) => {
     const r = Math.floor(Math.random() * movies.length);
     return (movies[r]) ? [ movies[r] ] : [];
 }
 
 //: ----------------------------------------------------------------------------
-export { Movie, jsonParse, intersection, filterByGenre, filterByDuration,
-    uniqueMovies, getRandomMovie }
+export { uniqueMovies, randomMovie, filterByGenre, filterByDuration }
