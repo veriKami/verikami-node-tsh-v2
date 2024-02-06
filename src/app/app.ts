@@ -19,8 +19,6 @@ app.set("json spaces", 2);
 
 //: views
 app.set("views", "./views");
-
-//: view engine
 app.set("view engine", "ejs");
 
 //: JSON parse

@@ -39,7 +39,7 @@ web interface ➔ [http://localhost:8000](http://localhost:8000)
 1. 🐧 (html) – [/](http://localhost:8000) – displays random movie
 
 2. **Movie** (html) – [/movie](http://localhost:8000/movie)
-   - returns ® random movie from "no duplicates" set - `json object {}`
+   - returns random movie from "no duplicates" set - `json object {}`
 
 3. **Movies** (html) – [/movies](http://localhost:8000/movies)
    - returns random movie from "no duplicates" set - `json array [0]`
