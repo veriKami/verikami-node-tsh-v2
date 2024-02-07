@@ -24,11 +24,12 @@ const getPath = (a:string): string[] => {
     return a.split("/").filter((s) => s !== "");
 }
 
-/** (req.path) get last element from path */
+/** check (json) path */
 //: ----------------------------------------------------------------------------
-// const endPath = (a:string): string => {
-//     return a.split("/").filter((s) => s !== "").at(-1) || "";
-// }
+const checkPath = (a:string): true|false => {
+    const path = getPath(a).at(-1);
+    return (path === "json") ? true : false;
+}
 
 /** get next id from movies */
 //: ----------------------------------------------------------------------------
@@ -37,4 +38,4 @@ const getId = (m:any) => {
 }
 
 //: ----------------------------------------------------------------------------
-export { jsonParse, intersection, getPath, getId }
+export { jsonParse, intersection, getPath, checkPath, getId }
