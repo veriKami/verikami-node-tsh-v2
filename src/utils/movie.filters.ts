@@ -4,19 +4,17 @@
 import { jsonParse, intersection } from "../utils/script.utils";
 import { Movie } from "../@types"; /** Movie interface (db) */
 
-/** filter by genres */
+/** filter movies by genres */
 //: ----------------------------------------------------------------------------
 const filterByGenre = (movies: Movie[], options: any ) => {
 
     const genres: string[] = options.genres;
 
-    //: filter movies by genres
     let data = movies.filter((el: any) => {
         const eg = el.genres;
         const fg = intersection(genres, eg);
         //: matches (score) for sorting
         el.__matches = fg.length;
-        //: matches only
         return fg.length > 0;
     });
 
