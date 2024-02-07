@@ -19,7 +19,7 @@ const getMovies = async (
 
     //: check last path element for (+/json) switch
     //: ----------------------------------------------------
-    const path = getPath(req.path).slice(-1)[0];
+    const path = getPath(req.path).at(-1);
     const json = (path === "json") ? true : false;
 
     //: query

@@ -27,7 +27,7 @@ const getPath = (a:string): string[] => {
 /** (req.path) get last element from path */
 //: ----------------------------------------------------------------------------
 // const endPath = (a:string): string => {
-//     return a.split("/").filter((s) => s !== "").slice(-1) || "";
+//     return a.split("/").filter((s) => s !== "").at(-1) || "";
 // }
 
 //: ----------------------------------------------------------------------------
