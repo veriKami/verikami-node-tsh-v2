@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from "express";
 
 import { uniqueMovies, randomMovie } from "../utils/movie.filters";
 import { filterByGenre, filterByDuration } from "../utils/movie.filters";
-import { jsonParse } from "../utils/script.utils";
+import { jsonParse, getPath } from "../utils/script.utils";
 import { log } from "../utils/display.log";
 import { db } from "../config/db";
 
@@ -19,8 +19,8 @@ const getMovies = async (
 
     //: check last path element for (+/json) switch
     //: ----------------------------------------------------
-    const path = req.path.split("/").filter((s) => s !== "");
-    const json = (path.pop() === "json") ? true : false;
+    const path = getPath(req.path).slice(-1)[0];
+    const json = (path === "json") ? true : false;
 
     //: query
     //: ----------------------------------------------------

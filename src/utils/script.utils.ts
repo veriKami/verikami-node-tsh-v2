@@ -20,16 +20,16 @@ const intersection = (a: string[], b: string[]): string[] => {
 
 /** (req.path) convert path to array (remove empty elements) */
 //: ----------------------------------------------------------------------------
-// const path = (a:string): string[] => {
-//     return a.split("/").filter((s) => s !== "");
-// }
+const getPath = (a:string): string[] => {
+    return a.split("/").filter((s) => s !== "");
+}
 
 /** (req.path) get last element from path */
 //: ----------------------------------------------------------------------------
 // const endPath = (a:string): string => {
-//     return a.split("/").filter((s) => s !== "").pop() || "";
+//     return a.split("/").filter((s) => s !== "").slice(-1) || "";
 // }
 
 //: ----------------------------------------------------------------------------
-//: export { jsonParse, intersection, path, endPath }
-export { jsonParse, intersection }
+//: export { jsonParse, intersection, getPath, endPath }
+export { jsonParse, intersection, getPath }
