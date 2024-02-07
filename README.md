@@ -103,14 +103,13 @@ src
 
 ## Documentation
 
-🍋 You can generate it (markdown + html) via:
+🍋 You can generate documentation (markdown + html) via:
 
 ```
-ツ npm run docs:m
-ツ npm run docs:h
+ツ npm run docs
 ```
 
-It will be available in `./docs` folder.
+It will be located in `docs` folder.
 
 ## Note
 

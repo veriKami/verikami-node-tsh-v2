@@ -19,8 +19,9 @@
     "test:e": "jest --no-cache --detectOpenHandles --forceExit",
     "test:c": "jest --coverage --silent=true --detectOpenHandles",
     "clean": "rm -rvf build/*",
-    "type:d": "npx tsc -d --declarationDir types --emitDeclarationOnly",
     "reset": "cp -v data/orig.db.json data/db.json",
+    "type:d": "npx tsc -d --declarationDir types --emitDeclarationOnly",
+    "docs": "npm run docs:m && npm run docs:h",
     "docs:m": "npx typedoc --plugin typedoc-plugin-markdown --out docs/md src/**/*.ts",
     "docs:h": "npx typedoc --out docs/html src/**/*.ts"
   },
