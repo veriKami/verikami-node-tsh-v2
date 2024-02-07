@@ -30,6 +30,11 @@ const getPath = (a:string): string[] => {
 //     return a.split("/").filter((s) => s !== "").at(-1) || "";
 // }
 
+/** get next id from movies */
 //: ----------------------------------------------------------------------------
-//: export { jsonParse, intersection, getPath, endPath }
-export { jsonParse, intersection, getPath }
+const getId = (m:any) => {
+    return Math.max(...(m.map((i:any) => i.id))) + 1;
+}
+
+//: ----------------------------------------------------------------------------
+export { jsonParse, intersection, getPath, getId }

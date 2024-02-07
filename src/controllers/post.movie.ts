@@ -4,7 +4,7 @@
 import { Request, Response, NextFunction } from "express";
 
 import { validateMovie } from "../utils/movie.validator";
-import { jsonParse } from "../utils/script.utils";
+import { jsonParse, getId } from "../utils/script.utils";
 import { log } from "../utils/display.log";
 import { db } from "../config/db";
 
@@ -25,6 +25,7 @@ const postMovie = async (
     try {
         //: data: movies & genres
         const data = await db.getData("/");
+
         let movies = data.movies;
         let genres = data.genres;
 
@@ -34,14 +35,14 @@ const postMovie = async (
         //: validation -> break on failure
         //: ------------------------------------------------
         const validate = validateMovie(m, genres) || "OK";
+
         log("va", validate);
 
         if (validate !== "OK") return res.json({ validate });
         //: ------------------------------------------------
 
         //: calculate & insert id
-        const last = movies[movies.length - 1];
-        const obj = { id: last.id + 1, ...m };
+        const obj = { id: getId(movies), ...m };
 
         //: insert into db
         await db.push("/movies[]", obj, true);
