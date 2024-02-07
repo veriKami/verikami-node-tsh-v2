@@ -31,6 +31,17 @@ const checkPath = (a:string): true|false => {
     return (path === "json") ? true : false;
 }
 
+/** check (json) path */
+//: ----------------------------------------------------------------------------
+const checkMode = (duration:any, genres:any): 1|2|3|4|undefined => {
+    let mode: 1|2|3|4|undefined;
+    if (!duration && !genres) mode = 1;
+    if (duration && !genres) mode = 2;
+    if (!duration && genres) mode = 3;
+    if (duration && genres) mode = 4;
+    return mode;
+}
+
 /** get next id from movies */
 //: ----------------------------------------------------------------------------
 const getId = (m:any) => {
@@ -38,4 +49,4 @@ const getId = (m:any) => {
 }
 
 //: ----------------------------------------------------------------------------
-export { jsonParse, intersection, getPath, checkPath, getId }
+export { jsonParse, intersection, getPath, checkPath, checkMode, getId }

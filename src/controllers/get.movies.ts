@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from "express";
 
 import { uniqueMovies, randomMovie } from "../utils/movie.filters";
 import { filterByGenre, filterByDuration } from "../utils/movie.filters";
-import { jsonParse, checkPath } from "../utils/script.utils";
+import { jsonParse, checkPath, checkMode } from "../utils/script.utils";
 import { log } from "../utils/display.log";
 import { db } from "../config/db";
 
@@ -48,15 +48,11 @@ const getMovies = async (
     try {
         //: data: movies -> unique movies
         const movies = await db.getData("/movies");
+
         out = uniqueMovies(movies);
 
-        //: modus operandi
-        let mode;
-
-        if (!duration && !genres) mode = 1;
-        if (duration && !genres) mode = 2;
-        if (!duration && genres) mode = 3;
-        if (duration && genres) mode = 4;
+        //: modus operandi -> 1|2|3|4
+        const mode = checkMode(duration, genres);
 
         log("md", mode);
 
