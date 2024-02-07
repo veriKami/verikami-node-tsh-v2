@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from "express";
 
 import { uniqueMovies, randomMovie } from "../utils/movie.filters";
 import { filterByGenre, filterByDuration } from "../utils/movie.filters";
-import { jsonParse, checkPath, checkMode } from "../utils/script.utils";
+import { jsonParse, checkPath, checkQuery, checkMode } from "../utils/script.utils";
 import { log } from "../utils/display.log";
 import { db } from "../config/db";
 
@@ -23,23 +23,7 @@ const getMovies = async (
 
     //: query
     //: ----------------------------------------------------
-    const query = req.query as any;
-
-    let duration = query.d; //: ?d=100
-    let genres = query.g; ////: ?g=Comedy,Fantasy,Romance
-    let complete = query.q; //: ?q={"runtime":"100","genres":["Comedy"]}
-
-    //: simple query -> create genres array
-    //: ----------------------------------------------------
-    try { genres = (genres as string).split(","); } catch {};
-
-    //: json query -> map runtime & create genres array
-    //: ----------------------------------------------------
-    try {
-        duration = JSON.parse(complete).runtime;
-        genres = JSON.parse(complete).genres;
-        if (genres.length === 0) genres = undefined;
-    } catch {};
+    const { duration, genres } = checkQuery(req.query);
 
     //: output (movies)
     //: ----------------------------------------------------

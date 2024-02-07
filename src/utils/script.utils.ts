@@ -42,6 +42,31 @@ const checkMode = (duration:any, genres:any): 1|2|3|4|undefined => {
     return mode;
 }
 
+/** check query */
+//: ----------------------------------------------------------------------------
+const checkQuery = (query:any): any => {
+
+    let duration = query.d; //: ?d=100
+    let genres = query.g; ////: ?g=Comedy,Fantasy,Romance
+    let complete = query.q; //: ?q={"runtime":"100","genres":["Comedy"]}
+
+    //: simple query -> create genres array
+    //: ----------------------------------------------------
+    try {
+        genres = (genres as string).split(",");
+    } catch {};
+
+    //: json query -> map runtime & create genres array
+    //: ----------------------------------------------------
+    try {
+        duration = JSON.parse(complete).runtime;
+        genres = JSON.parse(complete).genres;
+        if (genres.length === 0) genres = undefined;
+    } catch {};
+
+    return { duration, genres };
+}
+
 /** get next id from movies */
 //: ----------------------------------------------------------------------------
 const getId = (m:any) => {
@@ -49,4 +74,5 @@ const getId = (m:any) => {
 }
 
 //: ----------------------------------------------------------------------------
-export { jsonParse, intersection, getPath, checkPath, checkMode, getId }
+export { jsonParse, intersection, getPath, checkPath,
+    checkQuery, checkMode, getId }
