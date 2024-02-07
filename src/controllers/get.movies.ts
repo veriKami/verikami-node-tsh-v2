@@ -51,7 +51,7 @@ const getMovies = async (
         //: case (2) only duration -> random movie
         //: ------------------------------------------------
         if (2 == mode) {
-            out = filterByDuration(out, { duration });
+            out = filterByDuration(out, duration);
             out = randomMovie(out);
             log("m2");
         }
@@ -59,15 +59,15 @@ const getMovies = async (
         //: case (3) only genres
         //: ------------------------------------------------
         if (3 == mode) {
-            out = filterByGenre(out, { genres });
+            out = filterByGenre(out, genres);
             log("m3");
         }
 
         //: case (4) genres + duration
         //: ------------------------------------------------
         if (4 == mode) {
-            out = filterByGenre(out, { genres });
-            out = filterByDuration(out, { duration });
+            out = filterByGenre(out, genres);
+            out = filterByDuration(out, duration);
             log("m4");
         }
     }

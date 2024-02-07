@@ -22,23 +22,23 @@ const movies = json.movies;
         const m = movies.map((x: any) => ({ id: x.id, genres: x.genres }));
         const g = ["__Crime", "__Drama", "__Mystery", "Sport"];
 
-        const f = filterByGenre(m, { genres: g });
+        const f = filterByGenre(m, g);
 
         test("Test empty", () => {
             const a: any = [];
-            const x = filterByGenre(m, { genres: a });
+            const x = filterByGenre(m, a);
             expect(x).toEqual([]);
         });
 
         test("Test unknown", () => {
             const a = ["++"];
-            const x = filterByGenre(m, { genres: a });
+            const x = filterByGenre(m, a);
             expect(x).toEqual([]);
         });
 
         test("Test known", () => {
             const a = ["Sport"];
-            const x = filterByGenre(m, { genres: a });
+            const x = filterByGenre(m, a);
             expect(x[0].genres).toContain("Sport");
             expect(x.every((i) => i.genres.includes("Sport"))).toBeTruthy();
             expect(x.every((i) => i.genres.includes("Crime"))).toBeFalsy();
@@ -49,13 +49,13 @@ const movies = json.movies;
 
         test("Test __matches", () => {
             const a = genres; //: all movies
-            const x = filterByGenre(m, { genres: a });
+            const x = filterByGenre(m, a);
             expect(x.every((i) => <number> i.__matches > 0)).toBeTruthy();
         });
 
         test("Test contain", () => {
             const a = ["Mystery", "Sport"];
-            const x = filterByGenre(m, { genres: a });
+            const x = filterByGenre(m, a);
             expect(x.some((i) => i.genres.includes("Sport"))).toBeTruthy();
             expect(x.some((i) => i.genres.includes("Mystery"))).toBeTruthy();
         });
@@ -70,8 +70,7 @@ const movies = json.movies;
         const m = movies.map((x: any) => ({ id: x.id, runtime: x.runtime }));
         const d = 100;
 
-        //: const f = filterByDuration(m, d);
-        const f = filterByDuration(m, { duration: d });
+        const f = filterByDuration(m, d);
 
         test("Test runtime: between (+/-) 10 of duration", () => {
             expect(f.every((i) => <number> i.runtime >= d - 10)).toBeTruthy();

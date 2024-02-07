@@ -6,9 +6,7 @@ import { Movie } from "../@types"; /** Movie interface (db) */
 
 /** filter movies by genres */
 //: ----------------------------------------------------------------------------
-const filterByGenre = (movies: Movie[], options: any ) => {
-
-    const genres: string[] = options.genres;
+const filterByGenre = (movies: Movie[], genres: string[] ) => {
 
     let data = movies.filter((el: any) => {
         const eg = el.genres;
@@ -25,10 +23,7 @@ const filterByGenre = (movies: Movie[], options: any ) => {
 
 /** filter by duration (min/max) */
 //: ----------------------------------------------------------------------------
-const filterByDuration = (movies: Movie[], options: any ) => {
-
-    const duration: number = options.duration;
-
+const filterByDuration = (movies: Movie[], duration: string|number ) => {
     let data = movies;
 	data = data.filter((i: any) => i.runtime >= + duration - 10);
 	data = data.filter((i: any) => i.runtime <= + duration + 10);
