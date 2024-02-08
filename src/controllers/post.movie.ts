@@ -15,11 +15,9 @@ const postMovie = async (
     log("mp");
 
     //: body
-    //: ----------------------------------------------------
     const body = req.body as any;
 
-    //: output (movie)
-    //: ----------------------------------------------------
+    //: output
     let out: any;
 
     try {

@@ -18,15 +18,12 @@ const getMovies = async (
     req: __Request, res: Response, next: NextFunction) => {
 
     //: check path for (+/json) switch
-    //: ----------------------------------------------------
     const json = checkPath(req.path);
 
     //: query
-    //: ----------------------------------------------------
     const { duration, genres } = checkQuery(req.query);
 
-    //: output (movies)
-    //: ----------------------------------------------------
+    //: output
     let out: any[] = [];
 
     try {

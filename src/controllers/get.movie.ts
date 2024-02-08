@@ -18,11 +18,9 @@ const getMovie = async (
     log("mm");
 
     //: check path for (+/json) switch
-    //: ----------------------------------------------------
     const json = checkPath(req.path);
 
     //: output (movie)
-    //: ----------------------------------------------------
     let out: any;
 
     try {
