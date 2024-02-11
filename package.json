@@ -18,6 +18,8 @@
     "test:w": "jest --watchAll --detectOpenHandles --silent=true",
     "test:e": "jest --no-cache --detectOpenHandles --forceExit",
     "test:c": "jest --coverage --silent=true --detectOpenHandles",
+    "newman": "npx newman run \"tests/newman/postman.pure.json\"",
+    "newmant": "npx newman run \"tests/newman/postman.test.json\"",
     "clean": "rm -rvf build/*",
     "reset": "cp -v data/orig.db.json data/db.json",
     "type:d": "npx tsc -d --declarationDir types --emitDeclarationOnly",

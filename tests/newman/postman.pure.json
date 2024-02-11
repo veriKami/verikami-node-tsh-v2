@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "21493a2e-ce93-4ca5-91c6-512d2dcdb346",
+		"name": "@ TSH @ test (raw)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1550023"
+	},
+	"item": [
+		{
+			"name": "GET (html) home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET (json) movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET (json) movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/movies/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET (json) movies?d=100",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/movies/json/?d=100",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "d",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET (json) movies?g=Sport",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/movies/json/?g=Sport",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "g",
+							"value": "Sport"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET (json) movies?d=100&g=Sport",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/movies/json/?d=100&g=Sport",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "d",
+							"value": "100"
+						},
+						{
+							"key": "g",
+							"value": "Sport"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (json) movie (empty)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (json) movie (500) ERROR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "x",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (json) movie (x?)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"genres\": [\"x\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (json) movie (g)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"genres\": [\"Sport\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (json) movie (gt)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"genres\": [\"Sport\"],\n    \"title\": \"TiT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (json) movie (gty)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"genres\": [\"Sport\"],\n    \"title\": \"TiT\",\n    \"year\": 1999\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (json) movie (gtyr)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"genres\": [\"Sport\"],\n    \"title\": \"TiT\",\n    \"year\": 1999,\n    \"runtime\": 99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (json) movie (gtyrd)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"genres\": [\"Sport\"],\n    \"title\": \"TiT\",\n    \"year\": 1999,\n    \"runtime\": 99,\n    \"director\": \"DiR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/json",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
