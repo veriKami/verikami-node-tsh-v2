@@ -1,26 +1,22 @@
 //: ----------------------------------------------------------------------------
 /** controllers/get.movies.ts */
 /** ------------------------------------------------------------------------- */
-import { Request, Response, NextFunction } from "express";
+import { RequestHandler } from "express";
+import { __Request } from "../@types";
 
-import { uniqueMovies, randomMovie } from "../utils/movie.filters";
-import { filterByGenre, filterByDuration } from "../utils/movie.filters";
-import { jsonParse, checkPath, checkQuery, checkMode } from "../utils/script.utils";
+import { checkPath, checkQuery } from "../utils/req.utils";
+import { uniqueMovies, setMode } from "../utils/movie.filters";
 import { log } from "../utils/display.log";
 import { db } from "../config/db";
 
-/** Custom Request interface (req.out) */
-import { __Request } from "../@types";
-
-/** MOVIES */
+/** MOVIES (with conditions) + (optional) html */
 //: ----------------------------------------------------------------------------
-const getMovies = async (
-    req: __Request, res: Response, next: NextFunction) => {
+const getMovies: RequestHandler = async (req: __Request, res, next) => {
 
-    //: check path for (+/json) switch
+    //: path (html/json) switch
     const json = checkPath(req.path);
 
-    //: query
+    //: check query params
     const { duration, genres } = checkQuery(req.query);
 
     //: output
@@ -29,44 +25,10 @@ const getMovies = async (
     try {
         //: data: movies -> unique movies
         const movies = await db.getData("/movies");
-
         out = uniqueMovies(movies);
 
-        //: modus operandi -> 1|2|3|4
-        const mode = checkMode(duration, genres);
-
-        log("md", mode);
-
-        //: case (1) empty default -> random movie
-        //: ------------------------------------------------
-        if (1 == mode) {
-            //: out = out.sort((x: any) => - x.id);
-            out = randomMovie(out);
-            log("m1");
-        }
-
-        //: case (2) only duration -> random movie
-        //: ------------------------------------------------
-        if (2 == mode) {
-            out = filterByDuration(out, duration);
-            out = randomMovie(out);
-            log("m2");
-        }
-
-        //: case (3) only genres
-        //: ------------------------------------------------
-        if (3 == mode) {
-            out = filterByGenre(out, genres);
-            log("m3");
-        }
-
-        //: case (4) genres + duration
-        //: ------------------------------------------------
-        if (4 == mode) {
-            out = filterByGenre(out, genres);
-            out = filterByDuration(out, duration);
-            log("m4");
-        }
+        //: conditional selection
+        out = setMode(out, duration, genres);
     }
     catch (err) {
         /* istanbul ignore next */
@@ -74,7 +36,8 @@ const getMovies = async (
     }
     finally {
         if (json) return res.json(out);
-        req.out = out;
+        res.locals.out = out;
+        req.out = out; //: custom
         next();
     }
 };

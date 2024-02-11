@@ -1,17 +1,17 @@
 //: ----------------------------------------------------------------------------
 /** app/router.ts */
 /** ------------------------------------------------------------------------- */
-import express, { Router, Request, Response, NextFunction } from "express";
+import express from "express";
 
 import { getMovie } from "../controllers/get.movie";
 import { postMovie } from "../controllers/post.movie";
 import { getMovies } from "../controllers/get.movies";
-import { makeMovie } from "../controllers/make.movie";
 
-import { html } from "../middlewares/m.render";
+import { makeSearch as html } from "../renders/make.search";
+import { makeMovie } from "../renders/make.movie";
 import { log } from "../utils/display.log";
 
-const router: Router = express.Router();
+const router = express.Router();
 
 /** ROUTES */
 //: ----------------------------------------------------------------------------
@@ -30,18 +30,22 @@ router.get("/movie/json", getMovie);
 router.post("/movie/json", postMovie);
 router.get("/movies/json", getMovies);
 
+//: json output (/api/+)
+//: --------------------------------------------------------
+router.get("/api/movie", getMovie);
+router.post("/api/movie", postMovie);
+router.get("/api/movies", getMovies);
+
 /** HEALTH */
 //: --------------------------------------------------------
-router.get("/health", (
-    req: Request, res: Response) => {
+router.get("/health", (req, res) => {
     log("health");
     res.status(200).type("text").send("ツ");
 });
 
 /** TEST (next) ERROR */
 //: --------------------------------------------------------
-router.get("/err", (
-    req: Request, res: Response, next: NextFunction) => {
+router.get("/err", (req, res, next) => {
     log("error");
     try {
         throw Error("TEST (next) ERROR");

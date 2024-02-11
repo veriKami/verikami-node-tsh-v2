@@ -3,8 +3,8 @@
 /** ------------------------------------------------------------------------- */
 import Joi from "joi";
 
-import { NewMovie } from "../@types"; /** NewMovie interface */
-import { log } from "../utils/display.log";
+/** NewMovie interface */
+import { NewMovie } from "../@types";
 
 /** VALIDATOR: genres, title, year, runtime, director, actors, plot, posterUrl */
 //: ----------------------------------------------------------------------------

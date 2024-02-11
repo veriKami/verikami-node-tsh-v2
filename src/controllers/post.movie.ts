@@ -1,7 +1,7 @@
 //: ----------------------------------------------------------------------------
 /** controllers/post.movie.ts */
 /** ------------------------------------------------------------------------- */
-import { Request, Response, NextFunction } from "express";
+import { RequestHandler } from "express";
 
 import { validateMovie } from "../utils/movie.validator";
 import { jsonParse, getId } from "../utils/script.utils";
@@ -10,15 +10,14 @@ import { db } from "../config/db";
 
 /** MAKE (movie) POST */
 //: ----------------------------------------------------------------------------
-const postMovie = async (
-    req: Request, res: Response, next: NextFunction) => {
+const postMovie: RequestHandler = async (req, res, next) => {
     log("mp");
 
     //: body
     const body = req.body as any;
 
     //: output
-    let out: any;
+    let out: any = {};
 
     try {
         //: data: movies & genres
@@ -28,11 +27,11 @@ const postMovie = async (
         let genres = data.genres;
 
         //: json parse
-        const m = jsonParse(JSON.stringify(body));
+        const obj = jsonParse(JSON.stringify(body));
 
         //: validation -> break on failure
         //: ------------------------------------------------
-        const validate = validateMovie(m, genres) || "OK";
+        const validate = validateMovie(obj, genres) || "OK";
 
         log("va", validate);
 
@@ -40,18 +39,18 @@ const postMovie = async (
         //: ------------------------------------------------
 
         //: calculate & insert id
-        const obj = { id: getId(movies), ...m };
+        const movie = { id: getId(movies), ...obj };
 
         //: insert into db
-        await db.push("/movies[]", obj, true);
+        await db.push("/movies[]", movie, true);
 
         //: get last insert
         out = await db.getData("/movies[-1]");
 
         console.log(out);
         res.json(out);
-
-    } catch (err) {
+    }
+    catch (err) {
         /* istanbul ignore next */
         next(err);
     }

@@ -39,7 +39,6 @@ COPY --from=build --chown=node:node /app/public ./public
 COPY --from=build --chown=node:node /app/views ./views
 COPY --from=build --chown=node:node /app/build ./build
 
-##: --------------------------------------------------------
 USER node
 
 EXPOSE 8000

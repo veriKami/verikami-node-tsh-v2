@@ -32,9 +32,13 @@ RUN npm install
 
 COPY . ./
 
-##: --------------------------------------------------------
+##: ---------------------
+##: RUN npm run build
+##: RUN npm test
+
 EXPOSE 8000
 
+##: CMD ["node", "build/server.js"]
 CMD ["./node_modules/.bin/ts-node", "src/server.ts"]
 ##: --------------------------------------------------------
 ##: EOF

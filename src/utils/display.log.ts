@@ -41,13 +41,14 @@ const log = (key: string, option?: any): void => {
                 `\u001b[32mGET\u001b[0m -----------------`,
             mp: `\u001b[36mMAKE\u001b[0m (movie) ` +
                 `\u001b[35mPOST\u001b[0m ----------------`,
-            md: `\u001b[33mMODE\u001b[0m :: ${option}`,
+          mode: `\u001b[33mMODE\u001b[0m :: ${option}`,
             va: `\u001b[33mVALIDATE\u001b[0m: ${option}`,
+          html: "RENDER (html)"
     };
 
     //: unknown key
     if (!(key in obj)) {
-        return console.log(`\u001b[35m${key}\u001b[0m`, option);
+        return console.log(`\u001b[35m${key}\u001b[0m: ${option}`);
     }
 
     //: process.stdout.write(obj[key] + "\n");

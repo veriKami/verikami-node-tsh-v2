@@ -1,15 +1,14 @@
 //: ----------------------------------------------------------------------------
-/** controllers/make.movie.ts */
+/** renders/make.movie.ts */
 /** ------------------------------------------------------------------------- */
-import { Request, Response, NextFunction } from "express";
-
+import { RequestHandler } from "express";
 import { log } from "../utils/display.log";
 
 /** MAKE (movie) GET */
 //: ----------------------------------------------------------------------------
-const makeMovie = (
-    req: Request, res: Response, next: NextFunction) => {
+const makeMovie: RequestHandler = (req, res, next) => {
     log("mg");
+    log("html");
     res.render("make", {
         title: "Make",
         out: null

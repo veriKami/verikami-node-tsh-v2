@@ -39,4 +39,23 @@ export interface NewMovie {
 }
 
 //: ----------------------------------------------------------------------------
+//: NOTES
+/*
+    //: https://plainenglish.io/blog/typed-express-request-and-response-with-typescript
+
+    interface e.Request<P = ParamsDictionary,
+        ResBody = any,
+        ReqBody = any,
+        ReqQuery = QueryString.ParsedQs,
+        Locals extends Record<string, any> = Record<string, any>
+    >
+
+    export interface TypedRequestBody<T> extends Express.Request {
+       body: T
+    }
+
+    req: TypedRequestBody<{ username: string, password: string }>,
+
+*/
+//: ----------------------------------------------------------------------------
 //: EOT

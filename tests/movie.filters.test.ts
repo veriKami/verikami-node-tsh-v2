@@ -1,8 +1,8 @@
 //: ----------------------------------------------------------------------------
 /** TEST ** movie.filters.test.js
 /** ------------------------------------------------------------------------- */
-import { filterByGenre, filterByDuration, uniqueMovies, randomMovie }
-from "../src/utils/movie.filters";
+import { filterByGenre, filterByDuration, uniqueMovies, randomMovie,
+    checkMode, setMode } from "../src/utils/movie.filters";
 
 import { jsonParse, intersection } from "../src/utils/script.utils";
 import fs from "node:fs";
@@ -110,6 +110,34 @@ const movies = json.movies;
         test("Test random movie", () => {
             expect(a).toEqual([]);
             expect(b).toEqual([m]);
+        });
+    });
+
+//: ----------------------------------------------------------------------------
+//: TEST: checkMode
+
+    describe("METHOD: checkMode", () => {
+
+        const c1 = checkMode(0, 0);
+        const c2 = checkMode(1, 0);
+        const c3 = checkMode(0, 1);
+        const c4 = checkMode(1, 1);
+
+        test("Test checkMode", () => {
+            expect(c1).toEqual(1);
+            expect(c2).toEqual(2);
+            expect(c3).toEqual(3);
+            expect(c4).toEqual(4);
+        });
+    });
+
+//: ----------------------------------------------------------------------------
+//: TEST: setMode
+
+    describe("METHOD: setMode", () => {
+        test("Test setMode", () => {
+            const m = setMode([], 0, [""]);
+            expect(typeof m).toEqual("object");
         });
     });
 

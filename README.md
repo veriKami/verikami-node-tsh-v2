@@ -78,7 +78,7 @@ web interface ➔ [http://localhost:8000](http://localhost:8000)
 ```
 src
 ├── @types
-│   └── index.ts            ⬅︎ Type Definitions
+│   └── index.d.ts          ⬅︎ Type Definitions
 ├── app
 │   ├── app.ts              ⬅︎ Application
 │   └── router.ts           ⬅︎ Router
