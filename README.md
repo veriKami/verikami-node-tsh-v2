@@ -87,16 +87,18 @@ src
 ├── controllers             ⬅︎ Controllers
 │   ├── get.movie.ts
 │   ├── get.movies.ts
-│   ├── make.movie.ts
 │   └── post.movie.ts
 ├── middlewares             ⬅︎ Middlewares
 │   ├── m.error.ts
-│   └── m.render.ts
+├── renders
+│   ├── make.movie.ts
+│   └── make.search.ts
 ├── server.ts               ⬅︎ Starting Point
 └── utils
     ├── display.log.ts
     ├── movie.filters.ts
     ├── movie.validator.ts
+    ├── req.utils.ts
     └── script.utils.ts
 
 ```
