@@ -41,8 +41,7 @@ const randomMovie = (movies: Movie[]) => {
 const filterByGenre = (movies: Movie[], genres: string[]) => {
 
     let data = movies.filter((el: any) => {
-        const eg = el.genres;
-        const fg = intersection(genres, eg);
+        const fg = intersection(genres, el.genres);
         //: matches (score) for sorting
         el.__matches = fg.length;
         return fg.length > 0;
