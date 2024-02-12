@@ -31,11 +31,11 @@ const postMovie: RequestHandler = async (req, res, next) => {
 
         //: validation -> break on failure
         //: ------------------------------------------------
-        const validate = validateMovie(obj, genres) || "OK";
+        const validate = validateMovie(obj, genres);
 
-        log("va", validate);
+        log("va", validate || "-- DONE ----------------");
 
-        if (validate !== "OK") return res.json({ validate });
+        if (validate) return res.json({ validate });
         //: ------------------------------------------------
 
         //: calculate & insert id
