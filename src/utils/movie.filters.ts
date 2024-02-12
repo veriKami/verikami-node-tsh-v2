@@ -63,13 +63,11 @@ const filterByDuration = (movies: Movie[], duration: string|number) => {
 
 /** check (duration + genres) display mode */
 //: ----------------------------------------------------------------------------
-const checkMode = (d: any, g: any): 0|1|2|3|4 => {
-    let mode: 0|1|2|3|4 = 0;
-    if (!d && !g) mode = 1;
-    if (d && !g) mode = 2;
-    if (!d && g) mode = 3;
-    if (d && g) mode = 4;
-    return mode;
+const checkMode = (d: any, g: any): number => {
+    //: convert mode -> 00|10|01|11 -> 1|2|3|4
+    const tint = (x:any) => (isNaN(x) ? (x ? 1 : 0) : +!!x).toString();
+    const pint = (a:any, b:any) => 1 + parseInt(tint(b) + tint(a), 2);
+    return pint(d, g);
 };
 
 /** display mode apply */
